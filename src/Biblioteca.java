@@ -2,9 +2,24 @@ import java.util.ArrayList;
 
 public class Biblioteca {
 
-    ArrayList<Livro> livros = new ArrayList<>();//Lista de livros disponíveis na biblioteca
-    ArrayList<Usuario> usuarios = new ArrayList<>();//Lista de usuarios cadastrados
+    private ArrayList<Livro> livros = new ArrayList<>();//Lista de livros disponíveis na biblioteca
+    private ArrayList<Usuario> usuarios = new ArrayList<>();//Lista de usuarios cadastrados
 
+    public ArrayList<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(ArrayList<Livro> livros) {
+        this.livros = livros;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public void cadastrarLivro(Livro livro) {
         //Adiciona um livro à lista de livros
@@ -18,6 +33,15 @@ public class Biblioteca {
 
     public void realizarEmprestimo(String isbn, int idUsuario) {
         //Realiza o empréstimo de um livro para um usuário
+
+        for (int i = 0; i < getLivros().size();i++) {
+
+        }
+
+
+
+
+        livros.remove(0);
 
     }
 

@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -63,6 +64,7 @@ public class Main {
         int idCadastroDoUsuario;
         int idEmprestimoUsuario;
         String isbnEmprestimo;
+
         switch (escolhaUsuario) {
 
             case 1 :
@@ -82,7 +84,7 @@ public class Main {
                 biblioteca.cadastrarLivro(livro);
                 scanner.close();
 
-                System.out.println(livro);
+
                 break;
 
             case 2 :
@@ -107,7 +109,28 @@ public class Main {
 
 
 
-                biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
+                for (int i = 0; i < biblioteca.getLivros().size();i++) {
+                    if (biblioteca.getLivros().get(i).getIsbn().equals(isbnEmprestimo)) {
+
+                        biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
+
+
+
+                    }
+                }
+
+
+
+            case 4:
+                //Realiza devolução do livro
+
+
+            case 5:
+                //Exibe livros disponíveis
+
+
+            case 6:
+                System.exit(0);
 
 
         }

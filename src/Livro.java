@@ -45,6 +45,7 @@ public class Livro {
 
     public void emprestar() {
         //Marca o livro como indisponível
+        setDisponivel(false);
     }
 
     public void devolver() {
