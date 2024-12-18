@@ -8,10 +8,12 @@ public class Biblioteca {
 
     public void cadastrarLivro(Livro livro) {
         //Adiciona um livro à lista de livros
+        livros.add(livro);
     }
 
     public void cadastrarUsuario (Usuario usuario) {
         //Adiciona um usuario à lista de usuarios
+        usuarios.add(usuario);
     }
 
     public void realizarEmprestimo(String isbn, int idUsuario) {
