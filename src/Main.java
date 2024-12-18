@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Biblioteca biblioteca = new Biblioteca();
+
         int escolhaUsuarioMenu;
 
         escolhaUsuarioMenu = menuDeBoasVindas();
@@ -53,16 +53,57 @@ public class Main {
 
     public static void exibeProgramaEscolhidoMenu(int escolhaUsuario) {
         Scanner scanner = new Scanner(System.in);
+        Biblioteca biblioteca = new Biblioteca();
+        Usuario usuario = new Usuario();
+        Livro livro = new Livro();
         String nomeDoLivro;
         String autorDoLivro;
-        int isbn;
+        String isbnCadastro;
+        String nomeDoUsuario;
+        int idCadastroDoUsuario;
+        int idEmprestimoUsuario;
+        String isbnEmprestimo;
         switch (escolhaUsuario) {
 
             case 1 :
-                System.out.println("Por favor, digite os dados que pede a seguir:");
-                System.out.println("Digite o título do livro: ");
-                nomeDoLivro = scanner.next();
-                System.out.println("Digite ");
+                //Cadastro de livro
+                System.out.println("Digite o título do livro:");
+                nomeDoLivro = scanner.nextLine();
+                System.out.println("Digite o autor do livro:");
+                autorDoLivro = scanner.nextLine();
+                System.out.println("Digite o ISBN do livro:");
+                isbnCadastro = scanner.nextLine();
+
+                livro.setTitulo(nomeDoLivro);
+                livro.setAutor(autorDoLivro);
+                livro.setIsbn(isbnCadastro);
+
+                biblioteca.cadastrarLivro(livro);
+                scanner.close();
+                break;
+
+            case 2 :
+                //Cadastro de usuário
+                System.out.println("Digite o nome do usuário:");
+                nomeDoUsuario = scanner.nextLine();
+                System.out.println("Digite ID do usuário:");
+                idCadastroDoUsuario = scanner.nextInt();
+                usuario.setNome(nomeDoUsuario);
+                usuario.setId(idCadastroDoUsuario);
+
+                biblioteca.cadastrarUsuario(usuario);
+                scanner.close();
+                break;
+
+            case 3:
+                //Realizar empréstimo de livro
+                System.out.println("Digite o ISBN do livro:");
+                isbnEmprestimo = scanner.nextLine();
+                System.out.println("Digite o ID do usuario");
+                idEmprestimoUsuario = scanner.nextInt();
+
+                biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
+
 
         }
     }
