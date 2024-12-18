@@ -18,6 +18,7 @@ public class Biblioteca {
 
     public void realizarEmprestimo(String isbn, int idUsuario) {
         //Realiza o empréstimo de um livro para um usuário
+
     }
 
     public void realizarDevolucao(String isbn, int idUsuario) {

@@ -45,7 +45,7 @@ public class Main {
             }
         } while (escolhaUsuarioMenu > 6 || escolhaUsuarioMenu < 0);
 
-        scanner.close();
+
         return escolhaUsuarioMenu;
 
     }
@@ -77,9 +77,12 @@ public class Main {
                 livro.setTitulo(nomeDoLivro);
                 livro.setAutor(autorDoLivro);
                 livro.setIsbn(isbnCadastro);
+                livro.setDisponivel(true);
 
                 biblioteca.cadastrarLivro(livro);
                 scanner.close();
+
+                System.out.println(livro);
                 break;
 
             case 2 :
@@ -101,6 +104,8 @@ public class Main {
                 isbnEmprestimo = scanner.nextLine();
                 System.out.println("Digite o ID do usuario");
                 idEmprestimoUsuario = scanner.nextInt();
+
+
 
                 biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
 
