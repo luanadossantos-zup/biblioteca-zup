@@ -34,19 +34,48 @@ public class Biblioteca {
     public void realizarEmprestimo(String isbn, int idUsuario) {
         //Realiza o empréstimo de um livro para um usuário
 
-        for (int i = 0; i < getLivros().size();i++) {
+        // Encontrar o livro pelo ISBN
+        Livro livroEmprestimo = null;
 
+
+        for (Livro livro : livros) {
+            if (livro.getIsbn().equals(isbn)) {
+                livroEmprestimo = livro;
+                break;
+            }
+        }
+
+        if (livroEmprestimo == null || !livroEmprestimo.isDisponivel()) {
+            System.out.println("Livro não encontrado ou indisponível para empréstimo.");
+            return;
+        }
+
+        // Encontrar o usuário pelo ID
+        Usuario usuarioEmprestimo = null;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == idUsuario) {
+                usuarioEmprestimo = usuario;
+                break;
+            }
+        }
+
+        if (usuarioEmprestimo == null) {
+            System.out.println("Usuário não encontrado.");
+            return;
         }
 
 
+        livroEmprestimo.emprestar();
+        usuarioEmprestimo.adicionarLivro(livroEmprestimo);
+        System.out.println("Empréstimo realizado com sucesso!");
 
-
-        livros.remove(0);
 
     }
 
     public void realizarDevolucao(String isbn, int idUsuario) {
         //Realiza a devolução de um livro por um usuário
+
+
     }
 
     public void exibirLivrosDisponiveis() {
