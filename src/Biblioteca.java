@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Biblioteca {
 
@@ -37,7 +38,6 @@ public class Biblioteca {
         // Encontrar o livro pelo ISBN
         Livro livroEmprestimo = null;
 
-
         for (Livro livro : livros) {
             if (livro.getIsbn().equals(isbn)) {
                 livroEmprestimo = livro;
@@ -74,6 +74,46 @@ public class Biblioteca {
 
     public void realizarDevolucao(String isbn, int idUsuario) {
         //Realiza a devolução de um livro por um usuário
+
+
+        Livro livroDevolucao = null;
+        Usuario usuarioDevolvendo = null;
+
+
+        for (Usuario usuario: usuarios) {
+            if (idUsuario == usuario.getId()) {
+                usuarioDevolvendo = usuario;
+                break;
+            }
+
+        }
+
+        if (usuarioDevolvendo == null) {
+            System.out.println("Usuário não encontrado.");
+            return;
+        }
+
+
+        for (Livro livro: usuarioDevolvendo.getLivrosEmprestados()) {
+            if (Objects.equals(livro.getIsbn(), isbn)) {
+                livroDevolucao = livro;
+                break;
+            }
+        }
+
+        if (livroDevolucao == null || !livroDevolucao.isDisponivel()) {
+            System.out.println("Livro não encontrado ou indisponível para empréstimo.");
+            return;
+        }
+
+        livroDevolucao.devolver();
+        usuarioDevolvendo.removerLivro(livroDevolucao);
+
+
+
+
+
+
 
 
     }

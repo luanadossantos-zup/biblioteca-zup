@@ -89,35 +89,37 @@ public class Main {
                     //Cadastro de usuário
                     System.out.println("Digite o nome do usuário:");
                     nomeDoUsuario = scanner.nextLine();
+                    usuario.setNome(nomeDoUsuario);
+
                     System.out.println("Digite ID do usuário:");
                     idCadastroDoUsuario = scanner.nextInt();
-                    usuario.setNome(nomeDoUsuario);
                     usuario.setId(idCadastroDoUsuario);
 
                     biblioteca.cadastrarUsuario(usuario);
-                    scanner.close();
+
                     break;
 
                 case 3:
                     //Realizar empréstimo de livro
                     System.out.println("Digite o ISBN do livro:");
                     isbnEmprestimo = scanner.nextLine();
-                    System.out.println("Digite o ID do usuario");
+                    System.out.println("Digite o ID do usuario:");
                     idEmprestimoUsuario = scanner.nextInt();
+                    scanner.nextLine();
 
 
-                    for (int i = 0; i < biblioteca.getLivros().size(); i++) {
-
-                        if (biblioteca.getLivros().get(i).getIsbn().equals(isbnEmprestimo)) {
-
-                            biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
-
-
-                        }
-                    }
+                    biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
+                    break;
 
                 case 4:
                     //Realiza devolução do livro
+                    System.out.println("Digite o ISBN do livro:");
+                    String isbnDevolucao = scanner.nextLine();
+                    System.out.println("Digite o ID do usuario:");
+                    int idUsuarioDevolucao = scanner.nextInt();
+
+                    biblioteca.realizarDevolucao(isbnDevolucao,idUsuarioDevolucao);
+                    break;
 
 
                 case 5:

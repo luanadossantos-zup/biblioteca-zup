@@ -45,10 +45,20 @@ public class Livro {
 
     public void emprestar() {
         //Marca o livro como indisponível
+        if (!disponivel) {
+            System.out.println("Este livro já está emprestado.");
+            return;
+        }
         setDisponivel(false);
     }
 
     public void devolver() {
         //Marca o livro como disponível
+        if (disponivel) {
+            System.out.println("Este livro já foi devolvido.");
+            return;
+        }
+
+        setDisponivel(true);
     }
 }
