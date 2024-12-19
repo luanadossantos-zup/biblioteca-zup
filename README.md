@@ -9,7 +9,8 @@ Este software é um programa para treinamento dos conceitos de POO em Java. É u
 * Cadastro de novo usuário;
 * Empréstimo de livro;
 * Devolução de livro;
-* Exibição de livros disponíveis para empréstimos.
+* Exibição de livros disponíveis para empréstimos;
+* Salva lista de usuários e livros cadastrados ao sair da aplicação.
 
 ### Como funciona
 O usuário cadastra novos livros na biblioteca, com título do livro, autor e ISBN e cadastra novo usuário dando um ID a ele. 
