@@ -51,7 +51,6 @@ public class Main {
                 continue;
             }
 
-
             switch (escolhaUsuarioMenu) {
 
 
@@ -74,8 +73,6 @@ public class Main {
                     livro.setDisponivel(true);
 
                     biblioteca.cadastrarLivro(livro);
-
-
                     break;
 
                 case 2:
@@ -89,7 +86,6 @@ public class Main {
                     usuario.setId(idCadastroDoUsuario);
 
                     biblioteca.cadastrarUsuario(usuario);
-
                     break;
 
                 case 3:
@@ -99,7 +95,6 @@ public class Main {
                     System.out.println("Digite o ID do usuario:");
                     int idEmprestimoUsuario = scanner.nextInt();
                     scanner.nextLine();
-
 
                     biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
                     break;
@@ -114,21 +109,17 @@ public class Main {
                     biblioteca.realizarDevolucao(isbnDevolucao,idUsuarioDevolucao);
                     break;
 
-
                 case 5:
                     //Exibe livros disponíveis
                     biblioteca.exibirLivrosDisponiveis();
                     break;
 
-
                 case 6:
                     System.exit(0);
-
 
             }
 
         } while (true);
-
     }
 }
 
