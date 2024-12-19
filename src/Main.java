@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -14,11 +13,16 @@ public class Main {
     public static void menuDeBoasVindas() {
         Scanner scanner = new Scanner(System.in);
         int escolhaUsuarioMenu = 0;
+        Biblioteca biblioteca = new Biblioteca();
+        Usuario usuario = new Usuario();
+        Livro livro = new Livro();
 
 
         do {
             System.out.println(" ");
+            System.out.println("--------------------------------------------------------");
             System.out.println("Bem-vindo ao Sistema de Gerenciamento de Biblioteca Zup!");
+            System.out.println("--------------------------------------------------------");
             System.out.println("Escolha uma opção:");
             System.out.println("1 - Cadastrar livro");
             System.out.println("2 - Cadastrar usuário");
@@ -26,6 +30,7 @@ public class Main {
             System.out.println("4 - Realizar devolução");
             System.out.println("5 - Exibir livros disponíveis");
             System.out.println("6 - Sair");
+            System.out.println("--------------------------------------------------------");
 
             try {
                 escolhaUsuarioMenu = scanner.nextInt();
@@ -47,18 +52,6 @@ public class Main {
             }
 
 
-            Biblioteca biblioteca = new Biblioteca();
-            Usuario usuario = new Usuario();
-            Livro livro = new Livro();
-            String nomeDoLivro;
-            String autorDoLivro;
-            String isbnCadastro;
-            String nomeDoUsuario;
-            int idCadastroDoUsuario;
-            int idEmprestimoUsuario;
-            String isbnEmprestimo;
-
-
             switch (escolhaUsuarioMenu) {
 
 
@@ -66,13 +59,13 @@ public class Main {
                     //Cadastro de livro
 
                     System.out.println("Digite o título do livro:");
-                    nomeDoLivro = scanner.nextLine();
+                    String nomeDoLivro = scanner.nextLine();
 
                     System.out.println("Digite o autor do livro:");
-                    autorDoLivro = scanner.nextLine();
+                    String autorDoLivro = scanner.nextLine();
 
                     System.out.println("Digite o ISBN do livro:");
-                    isbnCadastro = scanner.nextLine();
+                    String isbnCadastro = scanner.nextLine();
 
 
                     livro.setTitulo(nomeDoLivro);
@@ -88,11 +81,11 @@ public class Main {
                 case 2:
                     //Cadastro de usuário
                     System.out.println("Digite o nome do usuário:");
-                    nomeDoUsuario = scanner.nextLine();
+                    String nomeDoUsuario = scanner.nextLine();
                     usuario.setNome(nomeDoUsuario);
 
                     System.out.println("Digite ID do usuário:");
-                    idCadastroDoUsuario = scanner.nextInt();
+                    int idCadastroDoUsuario = scanner.nextInt();
                     usuario.setId(idCadastroDoUsuario);
 
                     biblioteca.cadastrarUsuario(usuario);
@@ -102,9 +95,9 @@ public class Main {
                 case 3:
                     //Realizar empréstimo de livro
                     System.out.println("Digite o ISBN do livro:");
-                    isbnEmprestimo = scanner.nextLine();
+                    String isbnEmprestimo = scanner.nextLine();
                     System.out.println("Digite o ID do usuario:");
-                    idEmprestimoUsuario = scanner.nextInt();
+                    int idEmprestimoUsuario = scanner.nextInt();
                     scanner.nextLine();
 
 
@@ -124,7 +117,8 @@ public class Main {
 
                 case 5:
                     //Exibe livros disponíveis
-                    System.out.println("Livros disponíveis:");
+                    biblioteca.exibirLivrosDisponiveis();
+                    break;
 
 
                 case 6:

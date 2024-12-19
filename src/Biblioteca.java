@@ -6,13 +6,7 @@ public class Biblioteca {
     private ArrayList<Livro> livros = new ArrayList<>();//Lista de livros disponíveis na biblioteca
     private ArrayList<Usuario> usuarios = new ArrayList<>();//Lista de usuarios cadastrados
 
-    public ArrayList<Livro> getLivros() {
-        return livros;
-    }
 
-    public void setLivros(ArrayList<Livro> livros) {
-        this.livros = livros;
-    }
 
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
@@ -41,6 +35,8 @@ public class Biblioteca {
         for (Livro livro : livros) {
             if (livro.getIsbn().equals(isbn)) {
                 livroEmprestimo = livro;
+                livros.remove(livro);
+
                 break;
             }
         }
@@ -97,6 +93,8 @@ public class Biblioteca {
         for (Livro livro: usuarioDevolvendo.getLivrosEmprestados()) {
             if (Objects.equals(livro.getIsbn(), isbn)) {
                 livroDevolucao = livro;
+                livros.add(livroDevolucao);
+                livroDevolucao.setDisponivel(true);
                 break;
             }
         }
@@ -110,15 +108,26 @@ public class Biblioteca {
         usuarioDevolvendo.removerLivro(livroDevolucao);
 
 
-
-
-
-
-
-
     }
 
     public void exibirLivrosDisponiveis() {
         //Exibe todos os livros disponíveis para empréstimo
+        System.out.println("Abaixo segue livros disponíveis para empréstimo:");
+        System.out.println(" ");
+
+        boolean haLivrosDisponiveis = false;
+        for (Livro livro : livros) {
+            if (livro.isDisponivel()) {
+                System.out.println("Título: " + livro.getTitulo());
+                System.out.println("Autor: " + livro.getAutor());
+                System.out.println("ISBN: " + livro.getIsbn());
+                System.out.println(" ");
+                haLivrosDisponiveis = true;
+            }
+        }
+
+        if (!haLivrosDisponiveis) {
+            System.out.println("Nenhum livro disponível no momento.");
+        }
     }
 }

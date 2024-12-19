@@ -55,7 +55,7 @@ public class Livro {
     public void devolver() {
         //Marca o livro como disponível
         if (disponivel) {
-            System.out.println("Este livro já foi devolvido.");
+            System.out.println("Este livro foi devolvido.");
             return;
         }
 
