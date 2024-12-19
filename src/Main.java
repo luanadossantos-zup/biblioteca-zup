@@ -115,6 +115,7 @@ public class Main {
                     break;
 
                 case 6:
+                    biblioteca.salvarArraysEmTXT();
                     System.exit(0);
 
             }

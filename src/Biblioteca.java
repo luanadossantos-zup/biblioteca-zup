@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -134,6 +136,31 @@ public class Biblioteca {
 
         if (!haLivrosDisponiveis) {
             System.out.println("Nenhum livro disponível no momento.");
+        }
+    }
+
+    public void salvarArraysEmTXT ()  {
+        //Salva dados de livros e usuários em arquivos de texto na pasta raiz
+
+        try {
+            FileWriter writer = new FileWriter("livrosdisponiveis.txt");
+            for(Livro livro: livros) {
+                writer.write(livro.getTitulo() + System.lineSeparator() + livro.getIsbn() + System.lineSeparator());
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar TXT de livros");
+        }
+
+
+        try {
+            FileWriter writer = new FileWriter("usuarios.txt");
+            for(Usuario usuario: usuarios) {
+                writer.write(usuario.getNome() + System.lineSeparator() + usuario.getId() + System.lineSeparator());
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar TXT de usuarios");
         }
     }
 }
