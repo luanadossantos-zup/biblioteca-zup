@@ -90,22 +90,28 @@ public class Biblioteca {
         }
 
 
-        for (Livro livro: usuarioDevolvendo.getLivrosEmprestados()) {
-            if (Objects.equals(livro.getIsbn(), isbn)) {
-                livroDevolucao = livro;
-                livros.add(livroDevolucao);
-                livroDevolucao.setDisponivel(true);
-                break;
+        if (usuarioDevolvendo.getLivrosEmprestados().size() == 3) {
+            System.out.println("Usuário não pode retirar mais que 3 livros por vez!");
+
+
+        } else {
+            for (Livro livro: usuarioDevolvendo.getLivrosEmprestados()) {
+                if (Objects.equals(livro.getIsbn(), isbn)) {
+                    livroDevolucao = livro;
+                    livros.add(livroDevolucao);
+                    livroDevolucao.setDisponivel(true);
+                    break;
+                }
             }
-        }
 
-        if (livroDevolucao == null || !livroDevolucao.isDisponivel()) {
-            System.out.println("Livro não encontrado ou indisponível para empréstimo.");
-            return;
-        }
+            if (livroDevolucao == null || !livroDevolucao.isDisponivel()) {
+                System.out.println("Livro não encontrado ou indisponível para empréstimo.");
+                return;
+            }
 
-        livroDevolucao.devolver();
-        usuarioDevolvendo.removerLivro(livroDevolucao);
+            livroDevolucao.devolver();
+            usuarioDevolvendo.removerLivro(livroDevolucao);
+        }
 
 
     }
