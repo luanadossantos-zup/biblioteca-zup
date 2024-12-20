@@ -53,60 +53,24 @@ public class Main {
 
             switch (escolhaUsuarioMenu) {
 
-
                 case 1:
                     //Cadastro de livro
-
-                    System.out.println("Digite o título do livro:");
-                    String nomeDoLivro = scanner.nextLine();
-
-                    System.out.println("Digite o autor do livro:");
-                    String autorDoLivro = scanner.nextLine();
-
-                    System.out.println("Digite o ISBN do livro:");
-                    String isbnCadastro = scanner.nextLine();
-
-
-                    livro.setTitulo(nomeDoLivro);
-                    livro.setAutor(autorDoLivro);
-                    livro.setIsbn(isbnCadastro);
-                    livro.setDisponivel(true);
-
-                    biblioteca.cadastrarLivro(livro);
+                    cadastroDeLivro(scanner, livro, biblioteca);
                     break;
 
                 case 2:
                     //Cadastro de usuário
-                    System.out.println("Digite o nome do usuário:");
-                    String nomeDoUsuario = scanner.nextLine();
-                    usuario.setNome(nomeDoUsuario);
-
-                    System.out.println("Digite ID do usuário:");
-                    int idCadastroDoUsuario = scanner.nextInt();
-                    usuario.setId(idCadastroDoUsuario);
-
-                    biblioteca.cadastrarUsuario(usuario);
+                    cadastroDeUsuario(scanner, usuario, biblioteca);
                     break;
 
                 case 3:
                     //Realizar empréstimo de livro
-                    System.out.println("Digite o ISBN do livro:");
-                    String isbnEmprestimo = scanner.nextLine();
-                    System.out.println("Digite o ID do usuario:");
-                    int idEmprestimoUsuario = scanner.nextInt();
-                    scanner.nextLine();
-
-                    biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
+                    emprestimoDeLivro(scanner,biblioteca);
                     break;
 
                 case 4:
                     //Realiza devolução do livro
-                    System.out.println("Digite o ISBN do livro:");
-                    String isbnDevolucao = scanner.nextLine();
-                    System.out.println("Digite o ID do usuario:");
-                    int idUsuarioDevolucao = scanner.nextInt();
-
-                    biblioteca.realizarDevolucao(isbnDevolucao,idUsuarioDevolucao);
+                    devolucaoDeLivro(scanner,biblioteca);
                     break;
 
                 case 5:
@@ -121,6 +85,57 @@ public class Main {
             }
 
         } while (true);
+    }
+
+
+    public static void cadastroDeLivro (Scanner scanner, Livro livro, Biblioteca biblioteca){
+        System.out.println("Digite o título do livro:");
+        String nomeDoLivro = scanner.nextLine();
+
+        System.out.println("Digite o autor do livro:");
+        String autorDoLivro = scanner.nextLine();
+
+        System.out.println("Digite o ISBN do livro:");
+        String isbnCadastro = scanner.nextLine();
+
+
+        livro.setTitulo(nomeDoLivro);
+        livro.setAutor(autorDoLivro);
+        livro.setIsbn(isbnCadastro);
+        livro.setDisponivel(true);
+
+        biblioteca.cadastrarLivro(livro);
+    }
+
+    public static void cadastroDeUsuario (Scanner scanner, Usuario usuario, Biblioteca biblioteca) {
+        System.out.println("Digite o nome do usuário:");
+        String nomeDoUsuario = scanner.nextLine();
+        usuario.setNome(nomeDoUsuario);
+
+        System.out.println("Digite ID do usuário:");
+        int idCadastroDoUsuario = scanner.nextInt();
+        usuario.setId(idCadastroDoUsuario);
+
+        biblioteca.cadastrarUsuario(usuario);
+    }
+
+    public static void emprestimoDeLivro (Scanner scanner, Biblioteca biblioteca) {
+        System.out.println("Digite o ISBN do livro:");
+        String isbnEmprestimo = scanner.nextLine();
+        System.out.println("Digite o ID do usuario:");
+        int idEmprestimoUsuario = scanner.nextInt();
+        scanner.nextLine();
+
+        biblioteca.realizarEmprestimo(isbnEmprestimo, idEmprestimoUsuario);
+    }
+
+    public static void devolucaoDeLivro (Scanner scanner, Biblioteca biblioteca) {
+        System.out.println("Digite o ISBN do livro:");
+        String isbnDevolucao = scanner.nextLine();
+        System.out.println("Digite o ID do usuario:");
+        int idUsuarioDevolucao = scanner.nextInt();
+
+        biblioteca.realizarDevolucao(isbnDevolucao,idUsuarioDevolucao);
     }
 }
 
